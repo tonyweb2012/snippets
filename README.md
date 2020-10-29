@@ -4,6 +4,7 @@
 * Bash Style Guide and Coding Standard - https://lug.fh-swf.de/vim/vim-bash/StyleGuideShell.en.pdf
 * Bash Coding Style                    - https://github.com/icy/bash-coding-style
 * Bash scripting cheatsheet            - https://devhints.io/bash
+* Shell scripting standards and style guidelines - https://docs.gitlab.com/ee/development/shell_scripting_guide/
 
 Online Tools
 * explainshell.com - match command-line arguments to their help text
