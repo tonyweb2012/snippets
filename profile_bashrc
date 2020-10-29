@@ -1,0 +1,35 @@
+# https://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
+
+# .profile
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+    fi
+fi
+
+if [ -f "$HOME/.aliases" ]; then
+   . "$HOME/.aliases"
+fi
+###
+# .bashrc
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+[[ -f "$HOME/.aliases" ]] && . "$HOME/.aliases"
+# functions
+get_BAT_user_info() {
+   [[  "${1:-unset}" != "unset" ]] \
+      && sudo where_ldap ${1} | awk '/bat LDAP/,/Account status/ { if (/Netgroup/) print}' \
+      || echo "userId argument is missing"
+}
+
+get_netgroups_on_host() {
+   [[ "${1:-unset}" != "unset" ]] \
+      && sudo ssh "${1}" "egrep '^\+' /etc/passwd " \
+      || echo "host argument is missing"
+}
+
+
+
